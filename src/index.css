@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+body,
 p,
 h1,
 h2,
@@ -19,4 +20,30 @@ button,
 input,
 textarea {
   font: inherit;
+}
+
+html {
+  --colors-app-bg: hsl(236, 33%, 92%);
+  --colors-todo-bg: hsl(0, 0%, 98%);
+  --colors-completed-todo: hsl(233, 11%, 84%);
+  --colors-text-secondary: hsl(236, 9%, 61%);
+  --colors-text-primary: hsl(235, 19%, 35%);
+  --bg-desktop: url('./images/bg-desktop-light.jpg');
+  --bg-mobile: url('./images/bg-mobile-light.jpg');
+}
+
+.dark {
+  --colors-app-bg: hsl(235, 21%, 11%);
+  --colors-todo-bg: hsl(235, 24%, 19%);
+  --colors-completed-todo: hsl(234, 11%, 52%);
+  --colors-text-secondary: hsl(233, 14%, 35%);
+  --colors-text-primary: hsl(234, 39%, 85%);
+  --bg-desktop: url('./images/bg-desktop-dark.jpg');
+  --bg-mobile: url('./images/bg-mobile-dark.jpg');
+}
+
+body {
+  font: 400 1.125rem 'Josefin Sans', sans-serif;
+  background: var(--bg-desktop) no-repeat top/contain var(--colors-app-bg);
+  min-height: 100vh;
 }
