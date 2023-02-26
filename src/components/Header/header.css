@@ -1,0 +1,14 @@
+.app-header {
+  --colors-text: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--colors-text);
+}
+
+.app-logo {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  cursor: default;
+  user-select: none;
+}
