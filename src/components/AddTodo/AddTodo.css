@@ -1,0 +1,21 @@
+.add-todo {
+  display: flex;
+  align-items: center;
+  background-color: var(--colors-todo-bg);
+  padding: var(--children-padding);
+  border-radius: 4px;
+  color: var(--colors-text-primary);
+}
+.add-todo > input {
+  padding-inline: 1.5rem;
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  caret-color: var(--colors-tab-active);
+}
+
+.add-todo > input::placeholder {
+  color: var(--colors-text-secondary);
+  opacity: 1;
+}
