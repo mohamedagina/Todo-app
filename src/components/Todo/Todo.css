@@ -2,10 +2,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--children-gap);
   padding: var(--children-padding-block) var(--children-padding-inline);
   padding-inline-end: calc(var(--children-padding-inline) + 2.5rem);
   color: var(--colors-text-primary);
+  background-color: var(--colors-todo-bg);
   user-select: none;
 }
 
@@ -33,6 +33,11 @@
   background: linear-gradient(var(--colors-todo-bg), var(--colors-todo-bg))
       padding-box,
     var(--colors-check-gradient) border-box;
+}
+
+.todo .description {
+  padding: 2px;
+  padding-inline-start: var(--children-gap);
 }
 
 .delete {

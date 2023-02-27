@@ -3,6 +3,7 @@
   border-radius: 5px;
 }
 
-.todo-list > :not(:first-child) {
-  border-top: 1px solid var(--colors-br);
+.todo-list > :not(:last-child),
+.todo-items > :not(:last-child) {
+  border-bottom: 1px solid var(--colors-br);
 }

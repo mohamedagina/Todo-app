@@ -50,7 +50,20 @@ const Provider = ({ children }) => {
     [todoList]
   );
 
-  const handleChangeList = newList => setTodoList(newList);
+  const handleListReOrder = (source, destination) => {
+    const indexOne = todoList.findIndex(
+      todo => todo.id === visibleTodos[source].id
+    );
+    const indexTwo = todoList.findIndex(
+      todo => todo.id === visibleTodos[destination].id
+    );
+
+    const newOrder = [...todoList];
+    const firstItem = newOrder[indexOne];
+    newOrder.splice(indexOne, 1);
+    newOrder.splice(indexTwo, 0, firstItem);
+    setTodoList(newOrder);
+  };
 
   const sharedObj = {
     todoList,
@@ -63,7 +76,7 @@ const Provider = ({ children }) => {
     visibleTodos,
     handleClearCompleted,
     activeNumber,
-    handleChangeList
+    handleListReOrder
   };
   return (
     <TodoContext.Provider value={sharedObj}>{children}</TodoContext.Provider>
