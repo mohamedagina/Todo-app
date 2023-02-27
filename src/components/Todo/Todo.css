@@ -1,0 +1,56 @@
+.todo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--children-gap);
+  padding: var(--children-padding-block) var(--children-padding-inline);
+  padding-inline-end: calc(var(--children-padding-inline) + 2.5rem);
+  color: var(--colors-text-primary);
+  user-select: none;
+}
+
+.todo.completed {
+  color: var(--colors-completed-todo);
+  text-decoration: line-through;
+}
+
+.todo > * {
+  cursor: pointer;
+}
+
+.check.outline-circle {
+  display: grid;
+  place-items: center;
+}
+
+.todo.completed .check.outline-circle {
+  background: var(--colors-check-gradient);
+  border: none;
+}
+
+.todo:not(.completed) .check.outline-circle:hover {
+  border-color: transparent;
+  background: linear-gradient(var(--colors-todo-bg), var(--colors-todo-bg))
+      padding-box,
+    var(--colors-check-gradient) border-box;
+}
+
+.delete {
+  position: absolute;
+  inset-inline-end: var(--children-padding-inline);
+  opacity: 0;
+}
+
+.delete > svg path {
+  fill: var(--colors-text-secondary);
+}
+
+.todo:hover .delete {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .delete {
+    opacity: 1;
+  }
+}
