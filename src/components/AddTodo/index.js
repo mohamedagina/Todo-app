@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import useTodoContext from '../../hooks/use-todo-context';
 
 import './AddTodo.css';
 
-const AddTodo = ({ addTodo }) => {
+const AddTodo = () => {
   const [todo, setTodo] = useState('');
+
+  const { addTodo } = useTodoContext();
 
   const handleSubmit = e => {
     e.preventDefault();
