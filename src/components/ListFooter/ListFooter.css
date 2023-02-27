@@ -1,0 +1,19 @@
+.list-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: var(--children-padding-block) var(--children-padding-inline);
+  color: var(--colors-text-secondary);
+  font-size: 0.875rem;
+}
+
+.clear-completed {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.clear-completed:hover {
+  color: var(--colors-text-primary);
+}
