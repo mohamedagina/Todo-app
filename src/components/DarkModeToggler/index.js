@@ -13,7 +13,7 @@ const DarkModeToggler = () => {
 
   return (
     <button
-      className="mode-toggler"
+      className="icon-btn mode-toggler"
       type="button"
       onClick={() => setIsDark(!isDark)}
     >

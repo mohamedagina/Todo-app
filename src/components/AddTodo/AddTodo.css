@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   background-color: var(--colors-todo-bg);
-  padding: var(--children-padding);
-  border-radius: 4px;
+  padding: var(--children-padding-block) var(--children-padding-inline);
+  border-radius: 5px;
   color: var(--colors-text-primary);
 }
 .add-todo > input {
-  padding-inline: 1.5rem;
+  padding-inline: var(--children-gap);
   flex: 1;
   background-color: transparent;
   border: none;
