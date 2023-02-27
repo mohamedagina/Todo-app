@@ -1,0 +1,31 @@
+.todo-section {
+  --children-padding-inline: 1.5rem;
+  --children-padding-block: 1.25rem;
+  --children-gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.todo-section > .todo-filters {
+  display: none;
+  padding: var(--children-padding-block) var(--children-padding-inline);
+  background-color: var(--colors-todo-bg);
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .todo-section {
+    --children-padding-inline: 1rem;
+    --children-padding-block: 1.25rem;
+    --children-gap: 1rem;
+  }
+
+  .todo-section > .todo-filters {
+    display: flex;
+  }
+
+  .list-footer > .todo-filters {
+    display: none;
+  }
+}
