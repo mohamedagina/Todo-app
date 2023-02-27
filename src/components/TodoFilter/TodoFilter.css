@@ -1,0 +1,20 @@
+.todo-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.todo-filter {
+  background-color: transparent;
+  border: none;
+  color: var(--colors-text-secondary);
+  font-weight: 700;
+  cursor: pointer;
+}
+.todo-filter.active {
+  color: var(--colors-tab-active);
+}
+
+.todo-filter:not(.active):hover {
+  color: var(--colors-text-primary);
+}
