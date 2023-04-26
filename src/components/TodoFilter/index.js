@@ -2,23 +2,24 @@ import './TodoFilter.css';
 
 import useTodoContext from '../../hooks/use-todo-context';
 
-const TodoFilter = () => {
-  const { handleChangeFilter, filters, activeFilter } = useTodoContext();
+const filters = ['all', 'active', 'completed'];
+
+const TodoFilters = () => {
+  const { handleChangeFilter, activeFilter } = useTodoContext();
+
   return (
     <div className="todo-filters">
       {filters.map(filter => (
         <button
-          className={`todo-filter ${
-            filter.id === activeFilter ? 'active' : ''
-          }`}
-          onClick={() => handleChangeFilter(filter.id)}
-          key={filter.id}
+          key={filter}
+          className={`todo-filter ${filter === activeFilter ? 'active' : ''}`}
+          onClick={() => handleChangeFilter(filter)}
         >
-          {filter.title}
+          {filter}
         </button>
       ))}
     </div>
   );
 };
 
-export default TodoFilter;
+export default TodoFilters;

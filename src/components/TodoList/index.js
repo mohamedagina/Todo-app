@@ -28,7 +28,7 @@ const TodoList = () => {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {visibleTodos?.map((todo, index) => (
+                {visibleTodos.map((todo, index) => (
                   <Todo key={todo.id} todo={todo} index={index} />
                 ))}
 
@@ -38,6 +38,7 @@ const TodoList = () => {
           </Droppable>
         )}
       </DragDropContext>
+
       <ListFooter />
     </div>
   );

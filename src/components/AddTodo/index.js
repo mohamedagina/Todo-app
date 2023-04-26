@@ -10,15 +10,18 @@ const AddTodo = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (todo.trim()) {
-      addTodo(todo);
-      setTodo('');
-    }
+
+    const trimmedTodo = todo.trim();
+    if (!trimmedTodo) return;
+
+    addTodo(trimmedTodo);
+    setTodo('');
   };
 
   return (
     <form className="add-todo" onSubmit={handleSubmit}>
       <div className="outline-circle"></div>
+
       <input
         value={todo}
         onChange={e => setTodo(e.target.value)}

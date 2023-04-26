@@ -1,26 +1,30 @@
 import { createContext, useState, useMemo } from 'react';
 
+export const filters = ['all', 'active', 'completed'];
+
 const TodoContext = createContext();
 
 const Provider = ({ children }) => {
   const [todoList, setTodoList] = useState([]);
-  const [activeFilter, setActiveFilter] = useState(1);
+  const [activeFilter, setActiveFilter] = useState('all');
 
-  const filters = useMemo(
-    () => [
-      { id: 1, title: 'All', filter: () => true },
-      { id: 2, title: 'Active', filter: ({ completed }) => !completed },
-      { id: 3, title: 'Completed', filter: ({ completed }) => completed }
-    ],
-    []
-  );
+  // const filters = useMemo(
+  //   () => [
+  //     { id: 1, title: 'All', filter: () => true },
+  //     { id: 2, title: 'Active', filter: ({ completed }) => !completed },
+  //     { id: 3, title: 'Completed', filter: ({ completed }) => completed },
+  //     { id: 3, title: 'Completed', filter: ({ completed }) => completed },
+  //   ],
+  //   []
+  // );
 
   const addTodo = description => {
     const newTodo = {
-      id: Math.floor(Math.random() * 9999),
+      id: getID(),
       description,
       completed: false
     };
+
     setTodoList([...todoList, newTodo]);
   };
 
@@ -28,19 +32,30 @@ const Provider = ({ children }) => {
     const newList = todoList.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
+
     setTodoList(newList);
   };
 
   const deleteTodo = id => {
-    setTodoList(todoList.filter(({ id: todoId }) => todoId !== id));
+    setTodoList(todoList.filter(todo => todo.id !== id));
   };
 
-  const handleChangeFilter = newfilter => setActiveFilter(() => newfilter);
+  const handleChangeFilter = newFilter => setActiveFilter(newFilter);
 
   const visibleTodos = useMemo(() => {
-    const filter = filters.find(({ id }) => id === activeFilter).filter;
-    return todoList.filter(filter);
-  }, [todoList, activeFilter, filters]);
+    if (activeFilter === 'all') return todoList;
+
+    return todoList.filter(todo => {
+      switch (activeFilter) {
+        case 'active':
+          return !todo.completed;
+        case 'completed':
+          return todo.completed;
+        default:
+          return true;
+      }
+    });
+  }, [todoList, activeFilter]);
 
   const handleClearCompleted = () =>
     setTodoList(todoList.filter(({ completed }) => !completed));
@@ -68,7 +83,6 @@ const Provider = ({ children }) => {
   const sharedObj = {
     todoList,
     activeFilter,
-    filters,
     addTodo,
     toggleCompleted,
     deleteTodo,
@@ -78,10 +92,13 @@ const Provider = ({ children }) => {
     activeNumber,
     handleListReOrder
   };
+
   return (
     <TodoContext.Provider value={sharedObj}>{children}</TodoContext.Provider>
   );
 };
+
+const getID = () => Math.floor(Math.random() * 9999);
 
 export { Provider };
 

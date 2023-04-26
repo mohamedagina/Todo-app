@@ -14,7 +14,7 @@
   text-decoration: line-through;
 }
 
-.todo > * {
+.todo {
   cursor: pointer;
 }
 
