@@ -41,6 +41,7 @@ html {
   );
   --bg-desktop: url('./images/bg-desktop-light.jpg');
   --bg-mobile: url('./images/bg-mobile-light.jpg');
+  color-scheme: light dark;
 }
 
 .dark {
